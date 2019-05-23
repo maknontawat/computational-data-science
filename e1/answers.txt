@@ -1,0 +1,27 @@
+answer #1:
+Same calculations with Numpy and Pandas:
+- Row with lowest total precipitation (Numpy) & City with lowest total precipitation (Pandas).
+- Average precipitation in each month.
+- Average precipitation in each city.
+
+I found Numpy easier to work and code with. Also between Numpy and Pandas, the biggest difference is that pandas
+is designed for working with tabular or heterogeneous data. NumPy, by contrast, is best suited for working with
+homogeneous numerical array data.
+
+=================================================================================================
+
+answer #2:
+pivot_months_pandas(): 17 ms ± 6.17 ms per loop (mean ± std. dev. of 7 runs, 100 loops each)
+pivot_months_loops(): 1.3 s ± 7.51 ms per loop (mean ± std. dev. of 7 runs, 1 loop each)
+
+The difference in time can be explained as Pandas is highly optimized for performance,
+with critical code paths written in Cython or C. For example, Pandas Series are sometimes stored as
+NumPy ndarray. The NumPy ndarray is built around a C array, and the values are stored in a contiguous block of memory.
+Due to this storage scheme, accessing a slice of values is incredibly fast.
+
+=================================================================================================
+
+References:
+
+URL: https://www.dataquest.io/blog/pandas-big-data/
+BOOK: Python for Data Analysis, 2nd Edition
