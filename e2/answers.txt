@@ -1,0 +1,30 @@
+answer #1.
+Head of data['timestamp']*fit.slope + fit.intercept:
+2     13.185763
+7     13.181785
+8     13.179609
+24    13.167614
+30    13.163804
+...
+
+Name: timestamp, dtype: float64. The values from this calculation gives us the fitted red line on our plot and fill
+in the prediction column of our data frame.
+
+=======================================================================================================
+
+answer #2.
+We have used 'scipy.stats.linregress' in our notebook to produce this straight line. linegress function takes two sets of
+measurements. Both arrays should have the same length. In our case these measurements are 'created_at' and 'prediction'. 
+Generally, in a sactter plot the best fit line simply shows the trend line that best corresponds with the data. A straight
+line will result from a simple linear regression analysis of two or more independent variables.
+
+'created_at' and 'timestamp' are aligned by 'page' index on the data frame and therefore are equal in length. We also removed
+NaN ratings for which Pandas removed the corresponding entries in the remaining series of the data frame. In Pandas
+we have element wise operations, in this calculation 'data['timestamp']*fit.slope + fit.intercept' all the entries in
+'timestamp' series are multiplied with fit.slope and fit.intercept is added into each result.
+
+=======================================================================================================
+
+References:
+1 - https://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.linregress.html
+2 - https://www.investopedia.com/terms/l/line-of-best-fit.asp
