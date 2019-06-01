@@ -1,7 +1,6 @@
-/*
-
-!/e1
-!/e2
-
-**/e2/.ipynb_checkpoints
-**/e2/.vscode
+e4
+.DS_Store
+kalman.ipynb
+.ipynb_checkpoints
+.vscode
+.DS_Store

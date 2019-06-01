@@ -1,0 +1,19 @@
+answer #1.
+
+I get better results with Kalman filtering as there are enough data points to work with and get better resutls
+and Kalman follows the original data points more accurately than the LOESS-smooth line. With LOESS smoothing
+I got over-smoothed line for some temperature points which failed to capture the truth.
+
+==============================================================================================
+
+answers #2.
+
+I have used haversine formula which only relies on latitudes and logitudes values to compute distances. So, it would 
+not have made a  big difference if I were to consider other attributes in our data. Although, these addtional attributes
+would be helpful in predicting a transportation route. I could use the speed and direction to predict the next turn or 
+the flow of traffic on the road etc. 
+
+==============================================================================================
+
+References:
+None
