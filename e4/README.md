@@ -61,3 +61,10 @@ The city area is given in m², which is hard to reason about: convert to km². T
 Both data sets contain a latitude and longitude, but they don't refer to exactly the same locations. A city's “location” is some point near the centre of the city. That is very unlikely to be the exact location of a weather station, but there is probably one nearby.
 
 Find the weather station that is closest to each city. We need it's 'avg_tmax' value. This takes an kind of calculation: the distance between every city and station pair must be calculated.
+
+---
+
+### Credits
+
+- https://www.sfu.ca/computing/people/faculty/gregbaker.html
+- https://www.sfu.ca/students/calendar/2019/summer/courses/cmpt/353.html
