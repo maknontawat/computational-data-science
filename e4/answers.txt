@@ -1,0 +1,26 @@
+answer #1.
+From the scatter plot there doesn't seem to be any correlation between the density and temperature. As we don't get higher
+temperatures for higher densities or vice versa. So, therefore daily temperatures are not a good way to predict population
+density.
+
+==============================================================================================
+
+answer #2.
+In modern computers having the CPU decompress the file is faster than reading the decompressed version directly from the disk.
+The time it takes to get the decompressed file directly from disk is greater than the time to get the compressed version
+from the disk AND have the processor decompress it.
+
+Also from the reference below:
+------------------------------
+For decompressing compressed data your disks will be the bottleneck. Decompressing is much easier on the CPU than compressing,
+so your CPU can most likely decompress data much faster than your disk can hand over the input and write out the
+decompressed output.
+
+This is particularly true if you are extracting the archive to a location on the same disk, as the extra head movements
+(as they bounce back-and-forth between the location on the disk the archive is read from and the location the output is
+being written to) can reduce the read and write speed considerably.
+
+==============================================================================================
+
+References:
+https://superuser.com/questions/135594/what-is-more-important-when-extracting-rars-cpu-or-hdd
