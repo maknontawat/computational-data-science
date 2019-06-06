@@ -15,8 +15,8 @@ def get_cities_data(file):
     """
 
     data = pd.read_csv(file).dropna(subset=['area', 'population'])
-    data['area'] = data['area'] / 1000000
-    data['density'] = data['population']/data['area']
+    data['area'] = np.divide(data['area'],  1000000)
+    data['density'] = np.divide(data['population'], data['area'])
     data = data[data['area'] <= 10000]
 
     return data
