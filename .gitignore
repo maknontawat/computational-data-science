@@ -3,4 +3,4 @@ e5
 kalman.ipynb
 .ipynb_checkpoints
 .vscode
-.DS_Store
+*/.DS_Store
