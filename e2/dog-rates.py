@@ -14,15 +14,17 @@ from scipy import stats
 register_matplotlib_converters()
 
 
+RATING_REGEX = re.compile(r'(\d+(\.\d+)?)/10')
+
 # In[2]:
 
 
 def to_timestamp(date):
     return date.timestamp()
 
+
 def extract_rating(text):
-    r = r'(\d+(\.\d+)?)/10'
-    m = re.search(r, text)
+    m = RATING_REGEX.search(text)
     return float(m.group(0)[:-3]) if m else None
 
 
@@ -61,4 +63,3 @@ plt.ylabel('Ratings')
 plt.plot(data['created_at'], data['rating'], 'b.', alpha=0.5)
 plt.plot(data['created_at'], data['prediction'], 'r-', linewidth=3)
 plt.show()
-
