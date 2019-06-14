@@ -51,3 +51,10 @@ Hints: you can get a “year” and “week number” from the first two values 
 #### Fix 3: a non-parametric test might save us.
 
 The other option we have in our toolkit: a statistical test that doesn't care about the shape of its input as much. The Mann–Whitney U-test does not assume normally-distributed values, or equal variance. Perform a U-test on the (original non-transformed, non-aggregated) counts. Note that we should do a two-sided test here, which will match the other analyses. Make sure you get the arguments to the statsmodels function correct. Again, note that we're subtly changing the question again. If we reach a conclusion because of a U test, it's something like _it's not equally-likely that the larger number of comments occur on weekends vs weekdays._
+
+---
+
+### Credits
+
+- https://www.sfu.ca/computing/people/faculty/gregbaker.html
+- https://www.sfu.ca/students/calendar/2019/summer/courses/cmpt/353.html
