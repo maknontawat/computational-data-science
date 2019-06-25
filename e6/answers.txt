@@ -1,0 +1,36 @@
+question 1:
+In the A/B test analysis, do you feel like we're p-hacking? How comfortable are you coming to a conclusion at?
+
+answer:
+It depends on our observation. If we consider that we did not get significant results when we
+first did the analysis of just even/odd uid's and then followed up with analysis of only instructor uid’s
+to get somewhat significant results than it is p-hacking and I would be less comfortable at p < 0.05 as we
+deliberately increased the 5% chance of rejecting the null-hypothesis in our second test. On the other hand,
+if we consider instructor uid’s to answer a different question it is not p-hacking and in that case
+I am comfortable in coming to a conclusion.
+
+============================================================================================================
+question 2:
+If we had done T-tests between each pair of sorting implementation results, how many tests would we run?
+If we looked for in them, what would the probability be of having all conclusions correct, just by chance?
+That's the effective p-value of the many-T-tests analysis. [We could have done a Bonferroni correction when
+doing multiple T-tests, which is a fancy way of saying “for  tests, look for significance at ”.]
+
+answer: 
+21 tests would be run in total and the probability of having all conclusions correct would be (0.95)^21 = 0.34. Alpha
+would be 1 - 0.34 = 0.66 which gives a really low confidence in our results
+
+=============================================================================================================
+
+question3:
+Give a ranking of the sorting implementations by speed, including which ones could not be distinguished.
+(i.e. which pairs could our experiment not conclude had different running times?)
+
+answer:
+Starting from hihest speed:
+
+1. partition_sort
+2. qs1
+3. qs2 / qs3 (could not conclude because overlapping confidence intervals)
+4. qs5 / qs4 (sam reason as #3)
+5. merge1
