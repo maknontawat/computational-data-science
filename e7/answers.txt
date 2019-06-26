@@ -1,0 +1,15 @@
+answer #1:
+
+Yes, residuals are close enough to being normal. And since the p-value is really small it provides
+a strong evidence against the null-hypothesis and we can reasonably conclude that the ratings are
+increasing.
+
+================================================================================================
+
+answer #2:
+
+Yes, the new “better” prediction is letting the Kalman filter do a better job capturing the true
+signal in the noise. Before, Transition = identity for all variables but we replaced the top row
+with coefs to make a better prediction, which helped us capture more of the truth.
+
+
