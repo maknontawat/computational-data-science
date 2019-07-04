@@ -1,0 +1,21 @@
+answer #1:
+
+KNN did best for color prediction task. kNN can create a complicated decision boundary shape b/w
+different color classes. K in KNN is a hyperparameter that is used to control the shape of the
+decision boundary and I got best results with K=9. Decision boundary (i.e. boundaries for more
+than 2 classes) is used to classify all the data points.
+
+=================================================================================================
+
+answer #2:
+
+Yes, these mistakes are reasonable as the model makes mistakes between cities with similar
+weather patterns (as concluded from part 3 of this exercise). Additional features would definitely
+help the model make better predictions e.g. `air_pressure`, `humidity` etc.
+
+=================================================================================================
+
+References:
+1. https://kevinzakka.github.io/2016/07/13/k-nearest-neighbor/
+2. https://ggbaker.selfip.net/data-science/content/ml-classif.html
+3. https://stackabuse.com/using-machine-learning-to-predict-the-weather-part-1/

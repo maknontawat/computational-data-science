@@ -1,3 +1,7 @@
+#######################
+# Colour Words, Again #
+#######################
+
 import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
@@ -102,10 +106,10 @@ def main():
     bayes_lab_model = make_pipeline(func_transformer, GaussianNB())
 
     # KNeighborsClassifier
-    knn_rgb_model = KNeighborsClassifier(n_neighbors=10)
+    knn_rgb_model = KNeighborsClassifier(n_neighbors=9)
     knn_lab_model = make_pipeline(
         func_transformer,
-        KNeighborsClassifier(n_neighbors=10))
+        KNeighborsClassifier(n_neighbors=9))
 
     # SVC
     svc_rgb_model = SVC(kernel='linear', C=1)
