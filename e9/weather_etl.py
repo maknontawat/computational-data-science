@@ -4,8 +4,8 @@ from pyspark.sql import SparkSession, functions, types
 spark = SparkSession.builder.appName('weather ETL').getOrCreate()
 spark.sparkContext.setLogLevel('WARN')
 
-assert sys.version_info >= (3, 5) # make sure we have Python 3.5+
-assert spark.version >= '2.3' # make sure we have Spark 2.3+
+assert sys.version_info >= (3, 5)  # make sure we have Python 3.5+
+assert spark.version >= '2.3'  # make sure we have Spark 2.3+
 
 observation_schema = types.StructType([
     types.StructField('station', types.StringType()),
@@ -26,9 +26,23 @@ def main():
     weather = spark.read.csv(in_directory, schema=observation_schema)
 
     # TODO: finish here.
+    cleaned_data = weather.filter(weather.qflag.isNull())
+    cleaned_data = cleaned_data.filter(cleaned_data.station.startswith('CA'))
+    cleaned_data = cleaned_data.filter(cleaned_data.observation == 'TMAX')
+    cleaned_data = cleaned_data.withColumn("tmax", cleaned_data.value / 10)
 
-    cleaned_data.write.json(out_directory, compression='gzip', mode='overwrite')
+    cleaned_data.select(
+        cleaned_data["station"],
+        cleaned_data["date"],
+        cleaned_data["tmax"]
+    )
+
+    cleaned_data.write.json(
+        out_directory,
+        compression='gzip',
+        mode='overwrite'
+    )
 
 
-if __name__=='__main__':
+if __name__ == '__main__':
     main()
