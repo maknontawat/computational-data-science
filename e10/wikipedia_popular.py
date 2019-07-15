@@ -44,9 +44,6 @@ def main(in_directory, out_directory):
         path_to_hour(functions.input_file_name())
     )
 
-    # cache the dataframe
-    pages = pages.cache()
-
     # find the largest number of page views in each hour
     max_views_per_hr = pages.groupBy('timestamp').agg(functions.max('views'))
     max_views_per_hr = max_views_per_hr.withColumnRenamed('timestamp', 'ts')
@@ -67,6 +64,9 @@ def main(in_directory, out_directory):
 
     # sort by timestamp, title and then views
     pages = pages.sort('timestamp', 'title', 'views')
+
+    # cache the dataframe
+    pages = pages.cache()
 
     # write to output
     pages.coalesce(1).write.csv(
