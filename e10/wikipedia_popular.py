@@ -64,9 +64,9 @@ def main(in_directory, out_directory):
         pages['title'],
         max_views_per_hr['max(views)']
     )
-    pages = pages.sort('timestamp', 'title', 'views')
 
-    pages.show(6)
+    # sort by timestamp, title and then views
+    pages = pages.sort('timestamp', 'title', 'views')
 
     # write to output
     pages.coalesce(1).write.csv(
