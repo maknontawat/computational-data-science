@@ -46,11 +46,11 @@ def main(in_directory, out_directory):
     averages_by_subreddit = averages.sort('subreddit')
     averages_by_score = averages.sort(functions.desc('avg(score)'))
 
-    averages_by_subreddit.write.csv(
+    averages_by_subreddit.coalesce(1).write.csv(
         out_directory + '-subreddit',
         mode='overwrite'
     )
-    averages_by_score.write.csv(
+    averages_by_score.coalesce(1).write.csv(
         out_directory + '-score',
         mode='overwrite'
     )
