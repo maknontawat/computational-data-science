@@ -1,4 +1,5 @@
 import sys
+import re
 
 from pyspark.sql import SparkSession, functions, types
 
@@ -18,15 +19,14 @@ pages_schema = types.StructType([
 
 
 def to_hour(path):
-    path = path[path.rfind('pagecounts-'):]
-    path = path[path.index('-') + 1:-4]
-    return path
+    date_hour = re.search("([0-9]{8}\-[0-9]{2})", path)
+    return date_hour.group(1)
 
 
 def main(in_directory, out_directory):
     # fixes timestamp column
     path_to_hour = functions.udf(
-        lambda z: to_hour(z),
+        lambda path: to_hour(path),
         returnType=types.StringType()
     )
 
@@ -45,27 +45,25 @@ def main(in_directory, out_directory):
     )
 
     # find the largest number of page views in each hour
-    max_views_per_hr = pages.groupBy('timestamp').agg(functions.max('views'))
-    max_views_per_hr = max_views_per_hr.withColumnRenamed('timestamp', 'ts')
+    max_views_per_hr = pages\
+        .groupBy('timestamp')\
+        .agg(functions.max(pages['views']).alias('views'))
 
     # join to get page name of most visited page
-    join_where = [
-        (pages['views'] == max_views_per_hr['max(views)']) &
-        (pages['timestamp'] == max_views_per_hr['ts'])
-    ]
+    join_where = ['timestamp', 'views']
 
     # eliminate duplicate columns
-    pages = pages.join(max_views_per_hr, join_where, 'right_outer')
+    pages = max_views_per_hr.join(pages, join_where)
     pages = pages.select(
-        max_views_per_hr['ts'],
+        pages['timestamp'],
         pages['title'],
-        max_views_per_hr['max(views)']
+        pages['views']
     )
 
     # sort by timestamp, title and then views
     pages = pages.sort('timestamp', 'title', 'views')
 
-    # cache the dataframe
+    # cache the pages data frame
     pages = pages.cache()
 
     # write to output
