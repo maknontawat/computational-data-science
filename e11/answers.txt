@@ -1,0 +1,29 @@
+1. In your reddit_relative.py, what intermediate results did you .cache()?
+   Briefly describe what would have happened if you hadn't used .cache()
+   anywhere. (No need to time it, unless you really want to.)
+
+   I used .cache() on following DataFrames:
+    1. comments 
+    2. averages (stores average score per subreddit)
+    3. max_rel_score (stores maximum relative score per subreddit)
+   
+   These DataFrames are use to compute intermediate results, caching stops
+   spark from re-calculating them for these intermediate computations. Other-
+   wise the overall runtime for this spark job will be longer.
+
+==========================================================================
+
+2. How did marking DataFrames for broadcast affect the running time of the
+   “best author” program above?
+
+   With broadcast():
+   -----------------
+    real	0m38.982s
+    user	0m28.760s
+    sys	0m1.872s
+
+   Without broadcast():
+   --------------------
+    real	1m0.907s
+    user	0m31.340s
+    sys	0m2.128s
